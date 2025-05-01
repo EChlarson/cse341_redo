@@ -1,0 +1,30 @@
+{
+   "contact": {
+      "fistName": "Jared",
+      "lastName": "Chlarson",
+      "email": "jchlarson@test.com",
+      "favoriteColor": "Orange",
+      "birthday": "07/11/1988"
+   },
+   "contact2": {
+      "fistName": "Elizabeth",
+      "lastName": "Chlarson",
+      "email": "echlarson@test.com",
+      "favoriteColor": "Blue",
+      "birthday": "02/18/1993"
+   },
+   "contact3": {
+      "fistName": "Benjamin",
+      "lastName": "Chlarson",
+      "email": "bchlarson@test.com",
+      "favoriteColor": "Red",
+      "birthday": "11/27/2017"
+   },
+   "contact4": {
+      "fistName": "Annabelle",
+      "lastName": "Chlarson",
+      "email": "achlarson@test.com",
+      "favoriteColor": "Pink",
+      "birthday": "01/05/2021"
+   }
+}
