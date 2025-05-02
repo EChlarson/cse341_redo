@@ -1,3 +1,5 @@
+To make Compass import each contact as a separate document (each with its own _id), you need to format your JSON file as newline-delimited JSON (NDJSON) — that is, one JSON object per line, not inside an array.
+
 {"fistName": "Jared", 
 "lastName": "Chlarson", 
 "email": "jchlarson@test.com", 
