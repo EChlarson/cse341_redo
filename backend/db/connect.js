@@ -21,8 +21,9 @@ const initDb = (callback) => {
     
     //If the connection works, it stores the database connection in _db and calls the callback (used in app.js to know when it’s safe to start the server).
     .then((client) => {
-      _db = client;
-      callback(null, _db);  
+      _db = client.db(); // Select the default DB from URI
+      console.log('Successfully connected to MongoDB');
+      callback(null, _db);
     })
 
     //If something goes wrong connecting, it calls the callback with the error so you can log or handle it.
