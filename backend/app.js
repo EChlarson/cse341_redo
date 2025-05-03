@@ -19,13 +19,25 @@ app
     next();
   }) //The custom middleware adds a response header to allow Cross-Origin Resource Sharing (CORS) from any domain. This is important when your frontend and backend are on different domains/ports.
 
-//Connecting to MongoDB and starting the server
-mongodb.initDb((err, mongodb) => { //Calls the initDb function from your custom db/connect.js file.
-  if (err) { //If there's an error connecting to the database, it logs the error and does not start the server.
-    console.log(err); 
-  } else { //If the connection is successful, it starts the server and logs a success message.
-    app.use('/', require('./routes'));
-    app.listen(port, '0.0.0.0'); 
+// //Connecting to MongoDB and starting the server
+// mongodb.initDb((err, mongodb) => { //Calls the initDb function from your custom db/connect.js file.
+//   if (err) { //If there's an error connecting to the database, it logs the error and does not start the server.
+//     console.log(err); 
+//   } else { //If the connection is successful, it starts the server and logs a success message.
+//     app.use('/', require('./routes'));
+//     app.listen(port, '0.0.0.0'); 
+//     console.log(`Connected to DB and listening on ${port}`);
+//   }
+// });
+
+mongodb.initDb((err, mongodb) => {
+  if (err) {
+    console.log('DB connection failed:', err);
+    // TEMPORARY: Start the server anyway for debugging
+    app.listen(port, '0.0.0.0');
+    console.log(`Server started without DB on port ${port}`);
+  } else {
+    app.listen(port, '0.0.0.0');
     console.log(`Connected to DB and listening on ${port}`);
   }
 });
