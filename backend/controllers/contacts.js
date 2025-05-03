@@ -15,7 +15,6 @@ const getSingle = async (req, res, next) => {
   // Access the database and search the 'contacts' collection for a document with that _id
   const result = await mongodb
     .getDatabase()
-    .db()
     .collection('contacts')
     .find({ _id: userId });
   
