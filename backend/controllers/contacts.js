@@ -2,7 +2,7 @@ const mongodb = require('../db/connect'); //Imports your custom database connect
 const ObjectId = require('mongodb').ObjectId; //Lets you work with MongoDB's _id field, which is a special object type (not just a string).
 
 const getAll = async (req, res, next) => { //Connects to the contacts collection in the database.
-  const result = await mongodb.getDb().db().collection('contacts').find(); //Runs .find() to get all documents (contacts).
+  const result = await mongodb.getDatabase().db().collection('contacts').find(); //Runs .find() to get all documents (contacts).
   result.toArray().then((lists) => { //Converts the results into an array with .toArray().
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists); //Sends the array back to the client as a JSON response.
@@ -14,7 +14,7 @@ const getSingle = async (req, res, next) => {
   
   // Access the database and search the 'contacts' collection for a document with that _id
   const result = await mongodb
-    .getDb()
+    .getDatabase()
     .db()
     .collection('contacts')
     .find({ _id: userId });

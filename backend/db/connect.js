@@ -32,16 +32,16 @@ const initDb = (callback) => {
     });
 };
 
-// const getDb = () => {
+// const getDatabase = () => {
 //   if (!_db) { //If someone tries to use the DB before initDb() was called, it throws an error to prevent crashing or undefined behavior.
 //     throw Error('Db not initialized');
 //   }
 //   return _db; //Returns the database connection.
 // };
 
-const getDb = () => {
+const getDatabase = () => {
   if (!_db) {
-    console.warn('⚠️ getDb called before initialization');
+    console.warn('⚠️ getDatabase called before initialization');
     return null; // return null safely instead of throwing
   }
   return _db;
@@ -50,5 +50,5 @@ const getDb = () => {
 //Makes both functions available to other files.
 module.exports = {
   initDb,
-  getDb,
+  getDatabase,
 };
