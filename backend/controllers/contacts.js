@@ -2,10 +2,10 @@ const mongodb = require('../db/connect'); //Imports your custom database connect
 const ObjectId = require('mongodb').ObjectId; //Lets you work with MongoDB's _id field, which is a special object type (not just a string).
 
 const getAll = async (req, res, next) => { //Connects to the contacts collection in the database.
-  const result = await mongodb.getDatabase().db().collection('contacts').find(); //Runs .find() to get all documents (contacts).
-  result.toArray().then((lists) => { //Converts the results into an array with .toArray().
+  const result = await mongodb.getDatabase().db('cse341').collection('contacts').find(); //Runs .find() to get all documents (contacts).
+  result.toArray().then((contacts) => { //Converts the results into an array with .toArray().
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists); //Sends the array back to the client as a JSON response.
+    res.status(200).json(contacts); //Sends the array back to the client as a JSON response.
   });
 };
 
@@ -20,11 +20,11 @@ const getSingle = async (req, res, next) => {
     .find({ _id: userId });
   
   // Convert the result (a cursor) to an array
-  result.toArray().then((lists) => {
+  result.toArray().then((contacts) => {
     // Set the response header to indicate JSON content
     res.setHeader('Content-Type', 'application/json');
     // Send the first (and only) result back to the client with a 200 OK status
-    res.status(200).json(lists[0]);
+    res.status(200).json(contacts[0]);
   });
 };
 
