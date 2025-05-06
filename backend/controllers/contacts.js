@@ -1,6 +1,7 @@
 const mongodb = require('../db/connect'); //Imports your custom database connection module.
 const ObjectId = require('mongodb').ObjectId; //Lets you work with MongoDB's _id field, which is a special object type (not just a string).
 
+// GET all contacts
 const getAll = async (req, res, next) => { //Connects to the contacts collection in the database.
   const result = await mongodb.getDatabase().collection('contacts').find(); //Runs .find() to get all documents (contacts).
   result.toArray().then((contacts) => { //Converts the results into an array with .toArray().
@@ -9,6 +10,7 @@ const getAll = async (req, res, next) => { //Connects to the contacts collection
   });
 };
 
+// GET a single contact by ID
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id); // Convert the id from the request params to a MongoDB ObjectId
   
@@ -27,4 +29,72 @@ const getSingle = async (req, res, next) => {
   });
 };
 
-module.exports = { getAll, getSingle };
+// POST (create) a new contact
+const createContact = async (req, res) => {
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+
+  try {
+    const response = await mongodb.getDatabase().collection('contacts').insertOne(contact);
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      res.status(500).json({ error: 'Failed to create contact' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong.' });
+  }
+};
+
+//Put (update) an existing contact
+const updateContact = async (req, res) => {
+  const db = require('../db/connect').getDatabase();
+  const contactId = new ObjectId(req.params.id);
+  const updateData = req.body;
+
+  try {
+    const result = await db.collection('contacts').updateOne(
+      { _id: contactId },
+      { $set: updateData }
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: 'Contact not found' });
+    }
+
+    res.status(204).end(); // No content, update was successful
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update contact' });
+  }
+};
+
+// Delete a contact
+const deleteContact = async (req, res) => {
+  const db = require('../db/connect').getDatabase();
+  const contactId = new ObjectId(req.params.id);
+
+  try {
+    const result = await db.collection('contacts').deleteOne({ _id: contactId });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Contact not found' });
+    }
+
+    res.status(200).json({ message: 'Contact deleted' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete contact' });
+  }
+};
+
+module.exports = {
+  getAll,
+  getSingle,
+  createContact,
+  updateContact,
+  deleteContact
+};

@@ -6,13 +6,22 @@ const router = express.Router();
 //This keeps your route definitions clean while putting the actual “work” (database queries, data processing, etc.) in a separate controller file.
 const contactsController = require('../controllers/contacts');
 
-//Handles GET requests to /contacts
-//Calls contactsController.getAll to fetch all contacts from the database.
+const { ObjectId } = require('mongodb');
+
+//GET - Gets all contacts
 router.get('/', contactsController.getAll);
 
-//Calls contactsController.getSingle to fetch one specific contact based on the ID.
-//:id is a route parameter, like /contacts/12345
+//GET - Gets a single contact based on an ID
 router.get('/:id', contactsController.getSingle);
+
+// POST - Create a new contact
+router.post('/', contactsController.createContact);
+
+// PUT - Update a contact by ID
+router.put('/:id', contactsController.updateContact);
+
+// DELETE - Delete a contact by ID
+router.delete('/:id', contactsController.deleteContact);
 
 //Exports this router so it can be used in index.js, which then plugs into app.js.
 module.exports = router;
