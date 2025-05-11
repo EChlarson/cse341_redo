@@ -7,7 +7,7 @@ const contactsRoutes = require('./contacts');
 router.use('/contacts', contactsRoutes)
 
 router.get('/', (req, res) => {
-   res.send('Lesson 2 Landing Page!');
+   res.send('Lesson 3 Landing Page!');
 });
 
 //This exports the router so it can be used in app.js.
