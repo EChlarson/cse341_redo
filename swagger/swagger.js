@@ -10,6 +10,6 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./routes/temple.js']; // Path to your temple routes
+const endpointsFiles = ['./routes/temple.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

@@ -4,8 +4,9 @@
   "description": "LDS Temple API for BYU-Idaho WDD230 student projects",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger": "node ./swagger.js"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,5 @@
   },
   "devDependencies": {
     "swagger-autogen": "^2.23.7"
-  },
-
-  "scripts": {
-  "start": "node index.js",
-  "swagger-autogen": "node swagger.js"
   }
 }

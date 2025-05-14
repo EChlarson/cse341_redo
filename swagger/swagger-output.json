@@ -11,10 +11,18 @@
   "paths": {
     
     
-    "/api-docs": {
+    "/temples": {
       "get": {
         "summary": "Get all Temples",
-        "description": "Returns a list of all temples in the database.",
+        "description": "API Key - Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of temples"
@@ -24,47 +32,60 @@
           }
         }
       },
-
-
+      
+      
       "post": {
-          "summary": "Add a new Temple",
-          "description": "Adds a new Temple to the database.",
-          "parameters": [
-            {
-              "name": "temple",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "templeName": {"type": "string"},
-                  "id": {"type": "string"},
-                  "description": {"type": "string"},
-                  "location": {"type": "string"}
-                }
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Temple Added"
-            },
-            "404": {
-              "description": "Unable to Process"
-            }
-          }
-        }
-      },
-
-
-    "/temples/{id}": {
-      "get": {
-        "summary": "Get a Temple by ID",
-        "description": "Returns a single Temple associated with the ID.",
+        "summary": "Add a new Temple",
+        "description": "API Key - Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N",
         "parameters": [
           {
-            "name": "id",
+            "name": "apiKey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "temple",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["temple_id", "name"],
+              "properties": {
+                "temple_id": { "type": "string" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "location": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Temple Added"
+          },
+          "404": {
+            "description": "Unable to Process"
+          }
+        }
+      }
+    },
+    
+    
+    "/temples/{temple_id}": {
+      "get": {
+        "summary": "Get a Temple by ID",
+        "description": "API Key - Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N",
+        "parameters": [
+          {
+            "name": "temple_id",
             "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "apiKey",
+            "in": "header",
             "required": true,
             "type": "string"
           }
@@ -78,26 +99,33 @@
           }
         }
       },
-
-
+      
+      
       "put": {
-        "summary": "Update a temple by ID",
-        "description": "Updates the temple that is associated with that id.",
+        "summary": "Update a Temple by ID",
+        "description": "API Key - Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N",
         "parameters": [
           {
-            "name": "id",
+            "name": "ID",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "in": "body",
+            "name": "apiKey",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "temple",
+            "in": "body",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "templeName": { "type": "string" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
                 "location": { "type": "string" }
               }
             }
@@ -112,15 +140,21 @@
           }
         }
       },
-
-
+      
+      
       "delete": {
         "summary": "Delete a Temple by ID",
-        "description": "Delete the Temple associated with that id.",
+        "description": "API Key - Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N",
         "parameters": [
           {
-            "name": "id",
+            "name": "temple_id",
             "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "apiKey",
+            "in": "header",
             "required": true,
             "type": "string"
           }
