@@ -3,6 +3,10 @@ const express = require('express'); //A web framework for Node.js used to build 
 const bodyParser = require('body-parser'); //Middleware to parse incoming JSON in request bodies.
 const MongoClient = require('mongodb').MongoClient; //From the MongoDB package; used to connect to your database (though not used directly here).
 
+const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+
 //Importing local modules
 const mongodb = require('./db/connect'); //A custom module that handles the MongoDB connection logic.
 const professionalRoutes = require('./routes/contacts'); //Handles the routes related to contacts (even though it isn't used directly—more on that below).
@@ -13,6 +17,8 @@ const app = express();
 
 //Middleware Setup
 app
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+  .use(cors())
   .use(bodyParser.json()) //bodyParser.json(): Allows Express to read req.body when data is sent in JSON format.
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
