@@ -64,7 +64,7 @@
             "description": "Get contact from database associated with ID.",
             "parameters": [
                {
-                  "name": "contact_id",
+                  "name": "id",
                   "in": "path",
                   "required": true,
                   "type": "string"
@@ -86,7 +86,7 @@
             "description": "Update the contact associated with the ID.",
             "parameters": [
                {
-                  "name": "contact_id",
+                  "name": "id",
                   "in": "path",
                   "required": true,
                   "type": "string"
@@ -123,7 +123,7 @@
             "description": "Delete the contact associated with the given ID.",
             "parameters": [
                {
-                  "name": "contact_id",
+                  "name": "id",
                   "in": "path",
                   "required": true,
                   "type": "string"
@@ -131,7 +131,7 @@
             ],
             "responses": {
                "200": {
-                  "description": "Temple Deleted"
+                  "description": "Contact Deleted"
                },
                "404": {
                   "description": "Unable to Process"

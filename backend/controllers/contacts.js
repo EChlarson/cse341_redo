@@ -53,23 +53,29 @@ const createContact = async (req, res) => {
 
 //Put (update) an existing contact
 const updateContact = async (req, res) => {
-  const db = require('../db/connect').getDatabase();
-  const contactId = new ObjectId(req.params.id);
-  const updateData = req.body;
-
   try {
-    const result = await db.collection('contacts').updateOne(
-      { _id: contactId },
-      { $set: updateData }
-    );
+    const contactId = new ObjectId(req.params.id);
+    const updatedData = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday
+    };
 
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ message: 'Contact not found' });
+    const result = await mongodb
+      .getDatabase()
+      .collection('contacts')
+      .updateOne({ _id: contactId }, { $set: updatedData });
+
+    if (result.modifiedCount === 0) {
+      res.status(404).json({ message: 'Contact not found or no changes made' });
+    } else {
+      res.status(200).json({ message: 'Contact updated successfully' });
     }
-
-    res.status(204).end(); // No content, update was successful
   } catch (err) {
-    res.status(500).json({ error: 'Failed to update contact' });
+    console.error('Update error:', err);
+    res.status(500).json({ message: 'An error occurred while updating the contact' });
   }
 };
 
