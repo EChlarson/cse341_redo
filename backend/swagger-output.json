@@ -5,13 +5,13 @@
     "description": "API documentation for the Contacts routes",
     "version": "1.0.0"
   },
-  "host": "cse341-redo.onrender.com",
-  "basePath": "/",
+  "host": "localhost:8080",
+  "basePath": "/contacts",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
-    "/contacts": {
+    "/": {
       "get": {
         "description": "",
         "produces": [
@@ -61,7 +61,7 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/{id}": {
       "get": {
         "description": "",
         "produces": [

@@ -10,6 +10,7 @@ const doc = {
   },
   host: isProduction ? productionHost : 'localhost:8080',
   schemes: isProduction ? ['https'] : ['http'],
+  basePath: '/contacts'
 };
 
 const outputFile = './swagger-output.json';
