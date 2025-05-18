@@ -33,19 +33,19 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "favoriteColor": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "birthday": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -96,20 +96,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
+                "firstName": {"example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "favoriteColor": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "birthday": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
