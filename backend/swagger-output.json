@@ -13,7 +13,8 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "summary": "Get all Contacts",
+        "description": "Get all Contacts",
         "produces": [
           "application/json"
         ],
@@ -24,7 +25,8 @@
         }
       },
       "post": {
-        "description": "",
+        "summary": "Add a new Contact",
+        "description": "Add a new Contact",
         "parameters": [
           {
             "name": "body",
@@ -63,7 +65,8 @@
     },
     "/{id}": {
       "get": {
-        "description": "",
+        "summary":"Get a Contact by ID",
+        "description": "Get a Contact by ID",
         "produces": [
           "application/json"
         ],
@@ -82,7 +85,8 @@
         }
       },
       "put": {
-        "description": "",
+        "summary":"Update a Contact by ID",
+        "description": "Update a Contact by ID",
         "parameters": [
           {
             "name": "id",
@@ -127,7 +131,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "summary": "Delete a Contact by ID",
+        "description": "Delete a Contact by ID",
         "parameters": [
           {
             "name": "id",
