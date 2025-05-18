@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/": {
+    "/contacts": {
       "get": {
         "description": "",
         "produces": [
@@ -61,7 +61,7 @@
         }
       }
     },
-    "/{id}": {
+    "/contacts/{id}": {
       "get": {
         "description": "",
         "produces": [
